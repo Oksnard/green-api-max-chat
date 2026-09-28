@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --c-app: oklch(97.5% 0.003 265);
+  --c-surface: oklch(100% 0 0);
+  --c-surface-2: oklch(98.6% 0.003 265);
+  --c-line: oklch(91% 0.006 265);
+  --c-ink: oklch(21% 0.015 265);
+  --c-ink-2: oklch(52% 0.012 265);
+  --c-ink-3: oklch(66% 0.01 265);
+  --c-accent-from: #6c5ce7;
+  --c-accent-to: #5b7cfa;
+  --c-bubble-in: oklch(94.5% 0.005 265);
+  --c-bubble-in-ink: oklch(21% 0.015 265);
+  --c-online: oklch(62% 0.17 145);
+  --c-danger: oklch(58% 0.19 25);
+}
+
+.dark {
+  --c-app: oklch(19% 0.012 265);
+  --c-surface: oklch(23% 0.014 265);
+  --c-surface-2: oklch(21.5% 0.013 265);
+  --c-line: oklch(30% 0.014 265);
+  --c-ink: oklch(96% 0.004 265);
+  --c-ink-2: oklch(72% 0.012 265);
+  --c-ink-3: oklch(58% 0.012 265);
+  --c-bubble-in: oklch(29% 0.015 265);
+  --c-bubble-in-ink: oklch(96% 0.004 265);
+}
+
+@theme inline {
+  --color-app: var(--c-app);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-line: var(--c-line);
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-ink-3: var(--c-ink-3);
+  --color-bubble-in: var(--c-bubble-in);
+  --color-bubble-in-ink: var(--c-bubble-in-ink);
+  --color-online: var(--c-online);
+  --color-danger: var(--c-danger);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--c-app);
+    color: var(--c-ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .accent-gradient {
+    background-image: linear-gradient(135deg, var(--c-accent-from), var(--c-accent-to));
+  }
+
+  .bubble-out {
+    align-self: flex-end;
+    background-image: linear-gradient(135deg, var(--c-accent-from), var(--c-accent-to));
+    color: #ffffff;
+    border-radius: 16px 16px 6px 16px;
+  }
+
+  .bubble-in {
+    align-self: flex-start;
+    background-color: var(--c-bubble-in);
+    color: var(--c-bubble-in-ink);
+    border-radius: 16px 16px 16px 6px;
+  }
+}
